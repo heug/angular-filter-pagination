@@ -31,3 +31,28 @@ body {
 .description {
 	color: #999;
 }
+
+.footer {
+	text-align: center;
+	padding-bottom: 50px;	
+}
+
+.page-active {
+	border-radius: 2px;
+	font-color: #FFF;
+	background: #00F;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.page-item {
+	border-radius: 2px;
+	font-color: #444;
+	background: #DDD;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}

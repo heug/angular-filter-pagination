@@ -1,6 +1,9 @@
 <div>
 	<div class="container">
-	Filter by
+		Filter by <ul>
+			<li>
+			</li>
+		</ul>
 		<div class="row"></div>
 		<div class="hr"></div>
 		<div ng-repeat="item in repoList" class="row">
@@ -11,5 +14,10 @@
 			</div>
 			<div class="hr"></div>	
 		</div>
+	</div>
+	<div class="footer">
+		<span class='page-item'><</span>
+		<span ng-repeat="page in pageRange(1,10)" ng-class="page === currentPage ? 'page-active' : 'page-item'">{{ page }}</span>
+		<span class='page-item'>></span>
 	</div>
 </div>
