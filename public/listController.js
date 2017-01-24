@@ -14,6 +14,7 @@ angular.module('repo-view.listController', [])
 		$scope.currentPage = 1;
 		$scope.itemLimit = 10;
 		$scope.active = {};
+		$scope.accountList = {};
 
 		// Initialize by fetching all repos, determine number of total pages
 		repos.getAll().then(function(res) {
@@ -26,33 +27,15 @@ angular.module('repo-view.listController', [])
 				$scope.numPages = Math.ceil($scope.repoList.length / $scope.itemLimit);
 				$scope.currentPage = 1;
 			}, true);
+			for (var i = 0; i < $scope.totalItems; i++) {
+				if (!$scope.accountList[$scope.repoList[i].accountName]) {
+					$scope.accountList[$scope.repoList[i].accountName] = true;
+				}
+			}
 		});
 		
 		$scope.resetFilters = function() {
 			$scope.active = {};
 		};
-
-		$scope.pageRange = function() {
-			var answer = [];
-			var numPages = Math.min(numPages, 10);
-			for (var i = 1; i <= numPages; i++) {
-				answer.push(i);
-			}
-			return answer;
-		};
-
-		// Arrow buttons on scroll bar
-		$scope.scrollPage = function(direction) {
-			if (numPages <= 10) {
-				return;
-			}
-			if (direction === -1) {
-				$scope.scrollBar.splice(-1,1).unshift($scope.scrollBar[0] - 1);
-			}
-			if (direction === 1) {
-				$scope.scrollBar.shift().push($scope.scrollbar[$scope.scrollbar.length - 1] + 1);
-			}
-		};
-
 
 	}]);

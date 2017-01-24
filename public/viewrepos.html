@@ -21,16 +21,6 @@
 				<div class="hr"></div>	
 			</li>
 		</ul>
-		<pagination ng-model="currentPage" total-items="totalItems" boundary-links="true"></pagination>
-
 		<ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="itemLimit"></ul>
 	</div>
-	</div>
-	<div class="footer">
-	</div>
-	<!-- <div class="footer">
-		<span class="page-item" ng-click="scrollPage(-1)"><</span>
-		<span ng-repeat="page in scrollBar" ng-class="page === currentPage ? 'page-active' : 'page-item'" ng-click="">{{ page }}</a></span>
-		<span class="page-item" ng-click="scrollPage(1)">></span>
-	</div> -->
 </div>

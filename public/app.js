@@ -4,6 +4,7 @@ angular.module('repo-view', [
 	'ui.bootstrap',
 	'ngRoute'
 ])
+
 .config(function($routeProvider) {
 	$routeProvider
 		.when('/view', {
