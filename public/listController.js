@@ -11,9 +11,8 @@ angular.module('repo-view.listController', [])
 	})
 	
 	.controller('listController', ['$scope', 'repos', 'filterFilter', function($scope, repos, filterFilter) {
-		// Maximum # of items per page
-		$scope.itemLimit = 10;
 		$scope.currentPage = 1;
+		$scope.itemLimit = 10;
 		$scope.active = {};
 
 		// Initialize by fetching all repos, determine number of total pages

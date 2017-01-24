@@ -1,5 +1,5 @@
 <div>
-	<div class="container" ng-controller="listController">
+	<div class="container">
 		Filter by <ul>
 			<li>
 			</li>
@@ -21,8 +21,10 @@
 				<div class="hr"></div>	
 			</li>
 		</ul>
-		<pagination page="currentPage" max-size="numPages" total-items="itemLimit" items-per-page="itemLimit"></pagination>
-		
+		<pagination ng-model="currentPage" total-items="totalItems" boundary-links="true"></pagination>
+
+		<ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="itemLimit"></ul>
+	</div>
 	</div>
 	<div class="footer">
 	</div>
