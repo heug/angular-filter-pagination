@@ -1,23 +1,34 @@
 <div>
-	<div class="container">
+	<div class="container" ng-controller="listController">
 		Filter by <ul>
 			<li>
 			</li>
 		</ul>
-		<div class="row"></div>
-		<div class="hr"></div>
-		<div ng-repeat="item in repoList | filter:" class="row">
-			{{ item.accountName }} / <span class="repo-name">{{ item.repoName }}</span>
-			<span ng-class="item.private ? 'private' : ''">{{ item.private ? 'private' : '' }}</span>
-			<div class="description">
-				{{ item.description }}
-			</div>
+		<ul>
 			<div class="hr"></div>	
-		</div>
+			<li ng-repeat="item in filtered = repoList | filter:active | startFrom:(currentPage - 1) * itemLimit | limitTo:itemLimit">
+				{{ item.accountName }} / 
+				<span class="repo-name">
+					{{ item.repoName }}
+				</span>
+				<span ng-class="item.private ? 'private' : ''">
+					{{ item.private ? 'private' : '' }}
+				</span>
+				<br/>
+				<div class="description">
+					{{ item.description }}
+				</div>
+				<div class="hr"></div>	
+			</li>
+		</ul>
+		<pagination page="currentPage" max-size="numPages" total-items="itemLimit" items-per-page="itemLimit"></pagination>
+		
 	</div>
 	<div class="footer">
+	</div>
+	<!-- <div class="footer">
 		<span class="page-item" ng-click="scrollPage(-1)"><</span>
 		<span ng-repeat="page in scrollBar" ng-class="page === currentPage ? 'page-active' : 'page-item'" ng-click="">{{ page }}</a></span>
 		<span class="page-item" ng-click="scrollPage(1)">></span>
-	</div>
+	</div> -->
 </div>

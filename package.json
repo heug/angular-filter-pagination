@@ -1,0 +1,29 @@
+{
+  "name": "docker-ui",
+  "version": "1.0.0",
+  "description": "Repo view with pagination / filter",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "angular-ui-bootstrap": "^2.4.0",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heug/docker-repo-view.git"
+  },
+  "author": "Eugene Choe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heug/docker-repo-view/issues"
+  },
+  "homepage": "https://github.com/heug/docker-repo-view#readme"
+}

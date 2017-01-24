@@ -6,7 +6,6 @@ const app = express();
 app.use(express.static(__dirname + '/public'));
 
 app.get('/data', function(req, res) {
-	console.log(STUB_DATA);
 	res.json(STUB_DATA);
 });
 

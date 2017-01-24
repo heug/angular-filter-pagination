@@ -1,44 +1,50 @@
 angular.module('repo-view.listController', [])
-	
-	.controller('listController', function($scope, repos) {
-		$scope.repoList = [];
-		$scope.showList = [];
-		$scope.scrollBar = [];
-		$scope.pageSize = 10;
-		$scope.currentPage = 1;
 
+	.filter('startFrom', function() {
+		return function(input, start) {
+			if (input) {
+				start = +start;
+				return input.slice(start);
+			}
+			return [];
+		}
+	})
+	
+	.controller('listController', ['$scope', 'repos', 'filterFilter', function($scope, repos, filterFilter) {
+		// Maximum # of items per page
+		$scope.itemLimit = 10;
+		$scope.currentPage = 1;
+		$scope.active = {};
+
+		// Initialize by fetching all repos, determine number of total pages
 		repos.getAll().then(function(res) {
 			$scope.repoList = res.data;
-			$scope.scrollBar = $scope.pageRange();
-			$scope.showList = $scope.showRepos();
-			console.log($scope.showList);
+			$scope.totalItems = $scope.repoList.length;
+			$scope.numPages = Math.ceil($scope.totalItems / $scope.itemLimit);
+			$scope.$watch('active', function(newVal, oldVal) {
+				$scope.filtered = filterFilter($scope.repoList, newVal);
+				$scope.totalItems = $scope.filtered.length;
+				$scope.numPages = Math.ceil($scope.repoList.length / $scope.itemLimit);
+				$scope.currentPage = 1;
+			}, true);
 		});
-
-		$scope.showRepos = function() {
-			if ($scope.repoList.length <= 10) {
-				return $scope.repoList;
-			} else {
-				var end = $scope.currentPage * 10 - 1;
-				var start = end - 10;
-				return $scope.repoList.slice(start, end);
-			}
-		};
-
-		$scope.numPages = function() {
-			return Math.ceil($scope.repoList.length / $scope.pageSize);
+		
+		$scope.resetFilters = function() {
+			$scope.active = {};
 		};
 
 		$scope.pageRange = function() {
 			var answer = [];
-			var numPages = Math.min($scope.numPages(), 10);
+			var numPages = Math.min(numPages, 10);
 			for (var i = 1; i <= numPages; i++) {
 				answer.push(i);
 			}
 			return answer;
 		};
 
+		// Arrow buttons on scroll bar
 		$scope.scrollPage = function(direction) {
-			if ($scope.numPages() <= 10) {
+			if (numPages <= 10) {
 				return;
 			}
 			if (direction === -1) {
@@ -50,4 +56,4 @@ angular.module('repo-view.listController', [])
 		};
 
 
-	});
+	}]);
