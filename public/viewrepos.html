@@ -6,7 +6,7 @@
 		</ul>
 		<div class="row"></div>
 		<div class="hr"></div>
-		<div ng-repeat="item in repoList" class="row">
+		<div ng-repeat="item in repoList | limitTo:pageSize" class="row">
 			{{ item.accountName }} / {{ item.repoName }} 
 			<span ng-class="item.private ? 'private' : ''">{{ item.private ? 'private' : '' }}</span>
 			<div class="description">
@@ -16,8 +16,8 @@
 		</div>
 	</div>
 	<div class="footer">
-		<span class='page-item'><</span>
-		<span ng-repeat="page in pageRange(1,10)" ng-class="page === currentPage ? 'page-active' : 'page-item'">{{ page }}</span>
-		<span class='page-item'>></span>
+		<span class="page-item" ng-click="scrollPage(-1)"><</span>
+		<span ng-repeat="page in scrollBar" ng-class="page === currentPage ? 'page-active' : 'page-item'">{{ page }}</span>
+		<span class="page-item" ng-click="scrollPage(1)">></span>
 	</div>
 </div>
