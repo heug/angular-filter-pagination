@@ -1,29 +1,16 @@
 <div>
 	<div class="container">
-		Filter by <ul>
-			<li>
-			</li>
-		</ul>
-		<!-- <div class="form-group">
-		  <label for="sel1">Filter by</label>
-		  <select class="form-control" id="sel1">
-		  	<option><a href="" ng-click="resetFilters()">All accounts</a></option>
-		  	<option ng-repeat="(key, value) in accountList"><a href="" ng-click="active.accountName=key">{{ key }}</a></option>
-		  </select>
-		</div>
-		<div>
-			<select ng-options="(key, value) in accountList"></select>
-		</div>
-		    <div class="btn-group" uib-dropdown is-open="status.isopen">
-		      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-		        Button dropdown {{key}} <span class="caret"></span>
-		      </button>
-		      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-		      	<li><a href="" ng-click="resetFilters()">All accounts</a></li>
-		      	<li class="divider"></li>
-		      	<li ng-repeat="(key, value) in accountList"><a href="" ng-click="active.accountName=key">{{ key }}</a></li>
-		      </ul>
-		    </div> -->
+		Filter by 
+		<div class="btn-group" uib-dropdown is-open="status.isopen">
+      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+        {{ !active.accountName ? 'All accounts' : active.accountName }} <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+      	<li><a href="" ng-click="resetFilters()">All accounts</a></li>
+      	<li class="divider"></li>
+      	<li ng-repeat="(key, value) in accountList"><a href="" ng-click="active.accountName=key">{{ key }}</a></li>
+      </ul>
+    </div>
 		<ul>
 			<div class="hr"></div>	
 			<li ng-repeat="item in filtered = repoList | filter:active:true | startFrom:(currentPage - 1) * itemLimit | limitTo:itemLimit">

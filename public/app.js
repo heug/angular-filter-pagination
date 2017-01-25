@@ -2,9 +2,7 @@ angular.module('repo-view', [
 	'repo-view.services',
 	'repo-view.listController',
 	'ui.bootstrap',
-	'ui.select',
-	'ngSanitize',
-	'ngRoute',
+	'ngRoute'
 ])
 
 .config(function($routeProvider) {
