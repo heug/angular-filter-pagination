@@ -26,6 +26,8 @@ angular.module('repo-view.listController', [])
 				$scope.totalItems = $scope.filtered.length;
 				$scope.numPages = Math.ceil($scope.repoList.length / $scope.itemLimit);
 				$scope.currentPage = 1;
+				console.log('newVal', newVal, 'oldVal', oldVal);
+				console.log('active items', $scope.active);
 			}, true);
 			for (var i = 0; i < $scope.totalItems; i++) {
 				if (!$scope.accountList[$scope.repoList[i].accountName]) {
@@ -33,6 +35,8 @@ angular.module('repo-view.listController', [])
 				}
 			}
 		});
+
+
 		
 		$scope.resetFilters = function() {
 			$scope.active = {};
