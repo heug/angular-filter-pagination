@@ -1,5 +1,3 @@
-
-
 angular.module('repo-view', [
 	'repo-view.services',
 	'repo-view.listController',
@@ -7,6 +5,7 @@ angular.module('repo-view', [
 	'ngRoute'
 ])
 
+// TODO: Extend routes for other tabs
 .config(function($routeProvider) {
 	$routeProvider
 		.when('/repos', {

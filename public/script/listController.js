@@ -1,5 +1,6 @@
-angular.module('repo-view.listController', [])
+var app = angular.module('repo-view.listController', [])
 
+	// Filter for pagination
 	.filter('startFrom', function() {
 		return function(input, start) {
 			if (input) {
@@ -16,7 +17,7 @@ angular.module('repo-view.listController', [])
 		$scope.active = {};
 		$scope.accountList = {};
 
-		// Initialize by fetching all repos, determine number of total pages
+		// Initialize by fetching all repos, calculate pages, define watch on pagination
 		repos.getAll().then(function(res) {
 			$scope.repoList = res.data;
 			$scope.totalItems = $scope.repoList.length;
@@ -34,8 +35,6 @@ angular.module('repo-view.listController', [])
 				}
 			}
 		});
-
-
 		
 		$scope.resetFilters = function() {
 			$scope.active = {};
