@@ -7,11 +7,11 @@ angular.module('repo-view', [
 
 .config(function($routeProvider) {
 	$routeProvider
-		.when('/view', {
+		.when('/repos', {
 			templateUrl: 'viewrepos.html',
 			controller: 'listController'
 		})
 		.otherwise({
-			redirectTo: 'view'
+			redirectTo: 'repos'
 		});
 });
