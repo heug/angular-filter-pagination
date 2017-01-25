@@ -4,19 +4,29 @@
 			<li>
 			</li>
 		</ul>
+		<!-- <div class="form-group">
+		  <label for="sel1">Filter by</label>
+		  <select class="form-control" id="sel1">
+		  	<option><a href="" ng-click="resetFilters()">All accounts</a></option>
+		  	<option ng-repeat="(key, value) in accountList"><a href="" ng-click="active.accountName=key">{{ key }}</a></option>
+		  </select>
+		</div>
+		<div>
+			<select ng-options="(key, value) in accountList"></select>
+		</div>
 		    <div class="btn-group" uib-dropdown is-open="status.isopen">
 		      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-		        Button dropdown <span class="caret"></span>
+		        Button dropdown {{key}} <span class="caret"></span>
 		      </button>
 		      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+		      	<li><a href="" ng-click="resetFilters()">All accounts</a></li>
+		      	<li class="divider"></li>
 		      	<li ng-repeat="(key, value) in accountList"><a href="" ng-click="active.accountName=key">{{ key }}</a></li>
 		      </ul>
-		    </div>
-		    <a href="" ng-click="active.accountName='docker'">TESTTEST</a>
-		    <a href="" ng-click="resetFilters()">Show All</a>
+		    </div> -->
 		<ul>
 			<div class="hr"></div>	
-			<li ng-repeat="item in filtered = repoList | filter:active | startFrom:(currentPage - 1) * itemLimit | limitTo:itemLimit">
+			<li ng-repeat="item in filtered = repoList | filter:active:true | startFrom:(currentPage - 1) * itemLimit | limitTo:itemLimit">
 				{{ item.accountName }} / 
 				<span class="repo-name">
 					{{ item.repoName }}
